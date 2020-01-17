@@ -1,0 +1,12 @@
+{
+  "name": "smoltest",
+  "version": "1.0.0",
+  "description": "ok so basically im very smol",
+  "main": "app.js",
+  "bin": {
+    "smol": "app.js"
+  },
+  "repository": "git@github.com:mvasilkov/smol.git",
+  "author": "Mark Vasilkov (https://github.com/mvasilkov)",
+  "license": "MIT"
+}
