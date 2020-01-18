@@ -4,12 +4,12 @@
 const fs = require('fs')
 const path = require('path')
 
-const { getFileType } = require('./util')
+const { getFileType, isTestFile, isTestFunction } = require('./util')
 
 async function test(a) {
     const tests = require(a)
     for (const b in tests) {
-        if (!b.startsWith('test') || typeof tests[b] != 'function')
+        if (!isTestFunction(b) || typeof tests[b] != 'function')
             continue
 
         console.log(`\t* ${b}`)
@@ -24,11 +24,9 @@ async function run(root) {
             case a.isDirectory():
                 run(path.join(root, a.name))
             case !a.isFile():
+            case !isTestFile(a = a.name):
                 continue
         }
-        a = a.name
-        if (!a.startsWith('test_') || !a.endsWith('.js'))
-            continue
 
         console.log(`* ${a.substr(0, a.length - 3)}`)
         await test(path.join(root, a))

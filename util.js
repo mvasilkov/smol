@@ -10,3 +10,11 @@ exports.getFileType = function getFileType(a) {
     if (b.isDirectory()) return 'Directory'
     return ''
 }
+
+exports.isTestFile = function isTestFile(a) {
+    return a.startsWith('test_') && a.endsWith('.js')
+}
+
+exports.isTestFunction = function isTestFunction(a) {
+    return a.startsWith('test')
+}
