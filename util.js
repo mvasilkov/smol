@@ -12,9 +12,11 @@ exports.getFileType = function getFileType(a) {
 }
 
 exports.isTestFile = function isTestFile(a) {
-    return a.startsWith('test_') && a.endsWith('.js')
+    return a.endsWith('.test.js') || (a.startsWith('test_') && a.endsWith('.js'))
 }
 
 exports.isTestFunction = function isTestFunction(a) {
-    return a.startsWith('test')
+    return a.startsWith('test') || a.startsWith(isTestFunction.auto)
 }
+
+exports.isTestFunction.auto = '[[test]] '

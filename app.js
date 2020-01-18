@@ -8,12 +8,14 @@ const { getFileType, isTestFile, isTestFunction } = require('./util')
 
 async function test(a) {
     const tests = require(a)
-    for (const b in tests) {
-        if (!isTestFunction(b) || typeof tests[b] != 'function')
+    for (let [b, test] of Object.entries(tests)) {
+        if (!isTestFunction(b) || typeof test != 'function')
             continue
+        if (b.startsWith(isTestFunction.auto))
+            b = b.slice(isTestFunction.auto.length)
 
         console.log(`\t* ${b}`)
-        await tests[b]()
+        await test()
     }
 }
 
@@ -22,7 +24,7 @@ async function run(root) {
     for (let a of files) {
         switch (true) {
             case a.isDirectory():
-                run(path.join(root, a.name))
+                await run(path.join(root, a.name))
             case !a.isFile():
             case !isTestFile(a = a.name):
                 continue
