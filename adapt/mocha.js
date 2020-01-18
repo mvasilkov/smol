@@ -2,7 +2,7 @@
 
 const { isTestFunction } = require('../util')
 
-module.exports = function smolMocha(testMod) {
+module.exports = function smolMocha(exports) {
     const count = {}
 
     function describe(title, fun) {
@@ -13,14 +13,17 @@ module.exports = function smolMocha(testMod) {
         if (count.hasOwnProperty(title)) title += ` (${++count[title]})`
         else count[title] = 0
 
-        testMod.exports[isTestFunction.auto + title] = function test() {
+        exports[isTestFunction.auto + title] = function test() {
             if (!fun.length) return fun()
             return new Promise(done => fun(done))
         }
     }
 
+    function xdescribe() {
+    }
+
     function xit() {
     }
 
-    return { describe, it, xit }
+    return { describe, it, xdescribe, xit }
 }
