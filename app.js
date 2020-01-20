@@ -4,17 +4,26 @@
 const fs = require('fs')
 const path = require('path')
 
-const { getFileType, isTestFile, isTestFunction } = require('./util')
+const { _tests, getFileType, isTestFile, isTestFunction } = require('./util')
 
-async function test(a) {
-    const tests = require(a)
-    for (let [b, test] of Object.entries(tests)) {
-        if (!isTestFunction(b) || typeof test != 'function')
+function collect(testMod) {
+    const tests = []
+    for (const [title, test] of Object.entries(testMod)) {
+        if (!isTestFunction(title) || typeof test != 'function')
             continue
-        if (b.startsWith(isTestFunction.auto))
-            b = b.slice(isTestFunction.auto.length)
 
-        console.log(`\t* ${b}`)
+        tests.push({ title, test })
+    }
+    return tests
+}
+
+async function test(testFile) {
+    const testMod = require(testFile)
+    const tests = Array.isArray(testMod[_tests]) ? testMod[_tests] : collect(testMod)
+
+    for (let n = 0; n < tests.length; ++n) {
+        const { title, test } = tests[n]
+        console.log(`\t* ${title}`)
         await test()
     }
 }

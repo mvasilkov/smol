@@ -1,9 +1,10 @@
 'use strict'
 
-const { isTestFunction } = require('../util')
+const { _tests } = require('../util')
 
 module.exports = function smolMocha(exports) {
     const count = {}
+    const tests = exports[_tests] = []
 
     function describe(title, fun) {
         fun()
@@ -13,10 +14,12 @@ module.exports = function smolMocha(exports) {
         if (count.hasOwnProperty(title)) title += ` (${++count[title]})`
         else count[title] = 0
 
-        exports[isTestFunction.auto + title] = function test() {
+        function test() {
             if (!fun.length) return fun()
             return new Promise(done => fun(done))
         }
+
+        tests.push({ title, test })
     }
 
     function xdescribe() {

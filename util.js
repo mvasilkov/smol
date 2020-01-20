@@ -2,6 +2,8 @@
 
 const fs = require('fs')
 
+exports._tests = Symbol('tests')
+
 exports.getFileType = function getFileType(a) {
     if (!fs.existsSync(a)) return ''
 
@@ -16,7 +18,5 @@ exports.isTestFile = function isTestFile(a) {
 }
 
 exports.isTestFunction = function isTestFunction(a) {
-    return a.startsWith('test') || a.startsWith(isTestFunction.auto)
+    return a.startsWith('test')
 }
-
-exports.isTestFunction.auto = '[[test]] '
