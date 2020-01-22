@@ -4,7 +4,9 @@
 const fs = require('fs')
 const path = require('path')
 
-const { _tests, getFileType, isTestFile, isTestFunction } = require('./util')
+const smolMocha = require('./mocha')
+const { _tests, _untitled,
+    getFileType, isTestFile, isTestFunction } = require('./util')
 
 function collect(testMod) {
     const tests = []
@@ -54,3 +56,5 @@ if (require.main === module) {
     else if (type == 'File') test(root)
     else console.log('Usage: smol <DIR>')
 }
+
+module.exports = smolMocha

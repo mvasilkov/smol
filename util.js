@@ -3,13 +3,14 @@
 const fs = require('fs')
 
 exports._tests = Symbol('tests')
+exports._untitled = Symbol('untitled')
 
-exports.getFileType = function getFileType(a) {
-    if (!fs.existsSync(a)) return ''
+exports.getFileType = function getFileType(path) {
+    if (!fs.existsSync(path)) return ''
 
-    const b = fs.lstatSync(a)
-    if (b.isFile()) return 'File'
-    if (b.isDirectory()) return 'Directory'
+    const stats = fs.lstatSync(path)
+    if (stats.isFile()) return 'File'
+    if (stats.isDirectory()) return 'Directory'
     return ''
 }
 
