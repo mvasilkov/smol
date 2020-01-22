@@ -1,6 +1,6 @@
 {
   "name": "smoltest",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "ok so basically im very smol",
   "main": "app.js",
   "bin": {

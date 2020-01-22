@@ -8,6 +8,8 @@ const smolMocha = require('./mocha')
 const { _tests, _untitled,
     getFileType, isTestFile, isTestFunction } = require('./util')
 
+module.exports = smolMocha
+
 function collect(testMod) {
     const tests = []
     for (const [title, test] of Object.entries(testMod)) {
@@ -25,7 +27,8 @@ async function test(testFile) {
 
     for (let n = 0; n < tests.length; ++n) {
         const { title, test } = tests[n]
-        console.log(`\t* ${title}`)
+        if (title != _untitled)
+            console.log(`\t* ${title}`)
         await test()
     }
 }
@@ -56,5 +59,3 @@ if (require.main === module) {
     else if (type == 'File') test(root)
     else console.log('Usage: smol <DIR>')
 }
-
-module.exports = smolMocha

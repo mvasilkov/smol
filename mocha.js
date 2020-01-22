@@ -8,7 +8,7 @@ const _async = fun => () => new Promise(done => fun(done))
 
 function decorateMocha(fun) {
     return (a, b) => {
-        const [title, test] = typeof a == 'function' ?
+        let [title, test] = typeof a == 'function' ?
             ['Untitled', a] : [a, b]
         if (typeof test != 'function') test = nop
         else if (test.length) test = _async(test)
