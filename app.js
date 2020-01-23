@@ -6,7 +6,7 @@ const path = require('path')
 
 const smolMocha = require('./mocha')
 const { _tests, _untitled,
-    getFileType, isTestFile, isTestFunction } = require('./util')
+    getFileType, isTestFile, isTestFunction, logIndent } = require('./util')
 
 module.exports = smolMocha
 
@@ -26,9 +26,11 @@ async function test(testFile) {
     const tests = Array.isArray(testMod[_tests]) ? testMod[_tests] : collect(testMod)
 
     for (let n = 0; n < tests.length; ++n) {
-        const { title, test } = tests[n]
+        const { title, test, indentLevel } = tests[n]
         if (title != _untitled)
-            console.log(`\t* ${title}`)
+            logIndent(`* ${title}`)
+        if (typeof indentLevel == 'number')
+            logIndent.indentLevel += indentLevel
         await test()
     }
 }

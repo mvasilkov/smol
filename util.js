@@ -21,3 +21,10 @@ exports.isTestFile = function isTestFile(a) {
 exports.isTestFunction = function isTestFunction(a) {
     return a.startsWith('test')
 }
+
+exports.logIndent = function logIndent(string) {
+    const indent = ' '.repeat(2 * logIndent.indentLevel)
+    console.log(`${indent}${string}`)
+}
+
+exports.logIndent.indentLevel = 1

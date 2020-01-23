@@ -66,8 +66,9 @@ module.exports = function smolMocha(exports) {
         const stackFrame = initStackFrame()
 
         tests.push({
-            title: `Begin ${title}`,
+            title,
             test: stackFrameInvoke(stackFrame, 'before'),
+            indentLevel: 1,
         })
 
         stack.push(stackFrame)
@@ -75,8 +76,9 @@ module.exports = function smolMocha(exports) {
         stack.pop()
 
         tests.push({
-            title: `End ${title}`,
+            title: _untitled,
             test: stackFrameInvoke(stackFrame, 'after'),
+            indentLevel: -1,
         })
     })
 
