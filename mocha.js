@@ -92,8 +92,25 @@ module.exports = function smolMocha(exports) {
     const xdescribe = nop
     const xit = nop
 
+    /*
+    The BDD interface provides describe(), context(), it(),
+    specify(), before(), after(), beforeEach(), and afterEach().
+
+    context() is an alias for describe(), and specify() is
+    an alias for it().
+
+    The TDD interface provides suite(), test(), suiteSetup(),
+    suiteTeardown(), setup(), and teardown().
+    */
+
     return {
+        // BDD
         before, after, beforeEach, afterEach, describe, it,
         xdescribe, xit,
+        context: describe, specify: it,
+        // TDD
+        suite: describe, test: it,
+        suiteSetup: before, suiteTeardown: after,
+        setup: beforeEach, teardown: afterEach,
     }
 }
