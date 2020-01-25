@@ -1,7 +1,7 @@
 {
   "name": "smoltest",
   "version": "1.0.4",
-  "description": "ok so basically im very smol",
+  "description": "A JavaScript test runner. Like Mocha but smol.",
   "main": "app.js",
   "bin": {
     "smol": "app.js"
