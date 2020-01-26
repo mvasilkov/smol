@@ -2,6 +2,11 @@
   "name": "smoltest",
   "version": "1.0.4",
   "description": "A JavaScript test runner. Like Mocha but smol.",
+  "keywords": [
+    "test",
+    "mocha",
+    "smol"
+  ],
   "main": "app.js",
   "bin": {
     "smol": "app.js"

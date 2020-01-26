@@ -3,6 +3,8 @@ smol
 
 A JavaScript test runner. Like Mocha but smol.
 
+<img src="https://raw.githubusercontent.com/mvasilkov/smol/master/files/smol.png" width="200" height="200">
+
 *Ok so basically I'm very smol*
 
 [![npm][npm-image]][npm-url]
@@ -43,7 +45,7 @@ describe('String', () => {
 })
 ```
 
-<center><sup>File: string.test.js</sup></center>
+<p align="center"><sup>File: string.test.js</sup></p>
 
 Run the tests:
 
@@ -100,7 +102,7 @@ exports['test Array#fill()'] = () => {
 }
 ```
 
-<center><sup>File: array.test.js</sup></center>
+<p align="center"><sup>File: array.test.js</sup></p>
 
 License
 ---
