@@ -13,7 +13,6 @@ Why smol
 ---
 
 - No global variables
-- No preprocessing
 - No dependencies
 - Basically it's very smol
 
@@ -27,25 +26,24 @@ yarn add smoltest
 Usage
 ---
 
-Put the following code in the file **example.test.js**:
+Put the following code in a file:
 
 ```javascript
 const assert = require('assert').strict
 const { describe, it } = require('smoltest')(exports)
 
-describe('JavaScript programming language', () => {
-    it('Arrays are fun', () => {
-        const a = [,]
-        assert.strictEqual(a.includes(a[0]), true)
-        assert.strictEqual(a.indexOf(a[0]), -1)
+describe('String', () => {
+    it('#concat()', () => {
+        assert.strictEqual('a'.concat('b'), 'ab')
     })
 
-    it('constructor constructor constructor', () => {
-        assert.strictEqual(
-            constructor.constructor.constructor('return 9')(), 9)
+    it('#repeat()', () => {
+        assert.strictEqual('a'.repeat(2), 'aa')
     })
 })
 ```
+
+<center><sup>File: string.test.js</sup></center>
 
 Run the tests:
 
@@ -64,7 +62,7 @@ Syntax
 
 Smol supports the following Mocha syntax:
 
-| Mocha "BDD" | Mocha "TDD"
+| Mocha "BDD" [🔗][docs-bdd] | Mocha "TDD" [🔗][docs-tdd]
 | --- | ---
 | describe | suite
 | it | test
@@ -77,6 +75,13 @@ Smol supports the following Mocha syntax:
 | xdescribe |
 | xit |
 
+Unlike Mocha, these functions aren't global. They can be imported
+as follows:
+
+```javascript
+const { describe, it, beforeEach, afterEach } = require('smoltest')(exports)
+```
+
 You can also write test functions without any special syntax whatsoever,
 similar to pytest. Make sure to export any functions that are meant to be
 test cases with names starting with **test**.
@@ -84,11 +89,18 @@ test cases with names starting with **test**.
 For example:
 
 ```javascript
-exports.testParseInt = () => {
-    assert.strictEqual(parseInt(0.000001), 0)
-    assert.strictEqual(parseInt(0.0000001), 1)
+const assert = require('assert').strict
+
+exports['test Array#concat()'] = () => {
+    assert.deepStrictEqual(['a'].concat(['b']), ['a', 'b'])
+}
+
+exports['test Array#fill()'] = () => {
+    assert.deepStrictEqual(Array(2).fill('a'), ['a', 'a'])
 }
 ```
+
+<center><sup>File: array.test.js</sup></center>
 
 License
 ---
@@ -97,3 +109,5 @@ MIT
 
 [npm-image]: https://img.shields.io/npm/v/smoltest.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/smoltest
+[docs-bdd]: https://mochajs.org/#bdd
+[docs-tdd]: https://mochajs.org/#tdd
