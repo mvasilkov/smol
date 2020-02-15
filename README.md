@@ -3,11 +3,12 @@ smol
 
 A JavaScript test runner. Like Mocha but smol.
 
-<img src="https://raw.githubusercontent.com/mvasilkov/smol/master/files/smol.png" width="200" height="200">
+[<img src="https://raw.githubusercontent.com/mvasilkov/smol/master/files/smol.png" width="200" height="200">][github]
 
 *Ok so basically I'm very smol*
 
-[![npm][npm-image]][npm-url]
+[![npm][npm-badge]][npm-url]
+[![no dependencies][dependencies-badge]][dependencies-url]
 
 ---
 
@@ -22,7 +23,7 @@ Installation
 ---
 
 ```sh
-yarn add smoltest
+npm add smoltest
 ```
 
 Usage
@@ -109,7 +110,10 @@ License
 
 MIT
 
-[npm-image]: https://img.shields.io/npm/v/smoltest.svg?style=flat-square
+[github]: https://github.com/mvasilkov/smol
+[npm-badge]: https://img.shields.io/npm/v/smoltest.svg?style=flat
 [npm-url]: https://www.npmjs.com/package/smoltest
+[dependencies-badge]: https://img.shields.io/david/mvasilkov/smol?style=flat
+[dependencies-url]: https://www.npmjs.com/package/smoltest?activeTab=dependencies
 [docs-bdd]: https://mochajs.org/#bdd
 [docs-tdd]: https://mochajs.org/#tdd

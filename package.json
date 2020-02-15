@@ -5,7 +5,8 @@
   "keywords": [
     "test",
     "mocha",
-    "smol"
+    "smol",
+    "no-dependencies"
   ],
   "main": "app.js",
   "bin": {
