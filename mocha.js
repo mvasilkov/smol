@@ -4,14 +4,14 @@ const { _tests, _untitled } = require('./util')
 
 const nop = () => undefined
 
-const _async = fun => () => new Promise(done => fun(done))
+const toPromise = fun => () => new Promise(done => fun(done))
 
 function decorateMocha(fun) {
     return (a, b) => {
         let [title, test] = typeof a == 'function' ?
             ['Untitled', a] : [a, b]
         if (typeof test != 'function') test = nop
-        else if (test.length) test = _async(test)
+        else if (test.length) test = toPromise(test)
         return fun(title, test)
     }
 }

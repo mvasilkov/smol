@@ -26,6 +26,13 @@ Installation
 npm add smoltest
 ```
 
+Synopsis
+---
+
+```sh
+smol <DIR>
+```
+
 Usage
 ---
 
@@ -56,7 +63,7 @@ npx smol .
 
 Test files are those
 
-- Starting with **test_**
+- Starting with **test** and ending with **.js**
 - Ending with **.test.js**
 - Ending with **.spec.js**
 

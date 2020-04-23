@@ -1,6 +1,6 @@
 {
   "name": "smoltest",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A JavaScript test runner. Like Mocha but smol.",
   "keywords": [
     "test",

@@ -16,7 +16,7 @@ exports.getFileType = function getFileType(path) {
 
 exports.isTestFile = function isTestFile(a) {
     return a.endsWith('.test.js') || a.endsWith('.spec.js') ||
-        (a.startsWith('test_') && a.endsWith('.js'))
+        (a.startsWith('test') && a.endsWith('.js'))
 }
 
 exports.isTestFunction = function isTestFunction(a) {
