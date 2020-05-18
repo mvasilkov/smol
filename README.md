@@ -120,7 +120,7 @@ MIT
 [github]: https://github.com/mvasilkov/smol
 [npm-badge]: https://img.shields.io/npm/v/smoltest.svg?style=flat
 [npm-url]: https://www.npmjs.com/package/smoltest
-[dependencies-badge]: https://img.shields.io/david/mvasilkov/smol?style=flat
+[dependencies-badge]: https://img.shields.io/librariesio/release/npm/smoltest?style=flat
 [dependencies-url]: https://www.npmjs.com/package/smoltest?activeTab=dependencies
 [docs-bdd]: https://mochajs.org/#bdd
 [docs-tdd]: https://mochajs.org/#tdd
